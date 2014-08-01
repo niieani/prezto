@@ -72,7 +72,7 @@ function right_prompt_segment {
 
 # End the prompt, closing any open segments
 function right_prompt_start {
-  RIGHT_PROMPT_STRING=$RIGHT_PROMPT_STRING"%{%k%F{$1}%}%B${RIGHT_SIDE_SEGMENT_SEPARATOR}"
+  RIGHT_PROMPT_STRING=$RIGHT_PROMPT_STRING"%{%k%F{$1}%}%B${RIGHT_SIDE_SEGMENT_SEPARATOR}%b"
   CURRENT_BG=$1
 }
 
@@ -148,8 +148,8 @@ function build_left_prompt {
 
 function build_right_prompt {
   RIGHT_PROMPT_STRING=''
-  right_prompt_start yellow
-  right_prompt_segment yellow black '[%D{%L:%M:%S %p}]'
+  right_prompt_start black
+  right_prompt_segment black default '[%D{%L:%M:%S %p}]'
   right_prompt_end
 }
 
