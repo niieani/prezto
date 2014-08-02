@@ -122,9 +122,9 @@ zstyle ':prezto:module:prompt' theme 'zoc'
 
 # Set syntax highlighters.
 # By default, only the main highlighter is enabled.
-# zstyle ':prezto:module:syntax-highlighting' highlighters \
-#   'main' \
-#   'brackets' \
+zstyle ':prezto:module:syntax-highlighting' highlighters \
+  'main' \
+  'brackets' \
 #   'pattern' \
 #   'cursor' \
 #   'root'

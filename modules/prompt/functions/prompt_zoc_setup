@@ -172,7 +172,7 @@ function prompt_zoc_setup {
   zstyle ':prezto:module:editor:info:keymap:primary' format '%B%F{default}❯%F{cyan}❯%F{blue}❯%f%b'
   zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format '%F{red}♺%f'
   zstyle ':prezto:module:editor:info:keymap:alternate' format '%B%F{red}❮%F{yellow}❮%F{default}❮%f%b'
-#  zstyle ':prezto:module:git:info' verbose yes
+  zstyle ':prezto:module:git:info' verbose yes
   zstyle ':prezto:module:git:info:action' format '! %s'
   zstyle ':prezto:module:git:info:added' format '✚'
   zstyle ':prezto:module:git:info:ahead' format '↑⬆'
