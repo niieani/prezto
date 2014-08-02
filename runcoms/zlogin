@@ -16,7 +16,10 @@
 
 # Print a random, hopefully interesting, adage.
 if (( $+commands[fortune] )); then
-  fortune -a
+  echo ""
+  fortune
+# Lets leave offensive stuff out for now.
+# fortune -a
   print
 fi
 
