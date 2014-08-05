@@ -199,8 +199,8 @@ function prompt_zoc_setup {
   PROMPT='
 %{%f%b%k%}$LEFT_PROMPT_STRING
  ${editor_info[keymap]} '
-#  RPROMPT=$'\e[s'$'\e[1A''${RIGHT_PROMPT_STRING}'$'\e[1B'$'\e[u'
-  RPROMPT='${RIGHT_PROMPT_STRING}'
+  RPROMPT=$'%{\e[1A%}''${RIGHT_PROMPT_STRING}'$'%{\e[1B%}'
+#  RPROMPT='${RIGHT_PROMPT_STRING}'
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
 
