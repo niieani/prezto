@@ -1,5 +1,8 @@
 # vim:ft=zsh ts=2 sw=2 sts=2
-# Original file: https://github.com/paradox460/prezto/blob/paradox/modules/prompt/functions/prompt_paradox_setup
+
+# Latest version of this prompt can be found at: https://github.com/TheZoc/prezto/blob/master/modules/prompt/functions/prompt_zoc_setup
+# Based on original Paradox Theme - http://www.paradox.io/posts/9-my-new-zsh-prompt
+# Best when used with Solarized theme
 
 # Load dependencies.
 pmodload 'helper'
@@ -17,6 +20,11 @@ ARROW_RIGHT_BLACK=$'\uE0B0'
 ARROW_RIGHT=$'\uE0B1'
 ARROW_LEFT_BLACK=$'\uE0B2'
 ARROW_LEFT=$'\uE0B3'
+
+# Set some bright colors, since we love Solaried theme :)
+# Bright Magenta = Violet
+BRRED=9
+BRMAGENTA=13
 
 LEFT_SIDE_SEGMENT_SEPARATOR=$ARROW_RIGHT_BLACK
 RIGHT_SIDE_SEGMENT_SEPARATOR=$ARROW_LEFT_BLACK
@@ -62,7 +70,7 @@ function right_prompt_segment {
   [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
 
   if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
-    RIGHT_PROMPT_STRING=$RIGHT_PROMPT_STRING" %{$bg%F{$CURRENT_BG}%}${RIGHT_SIDE_SEGMENT_SEPARATOR}%{${fg}%} "
+    RIGHT_PROMPT_STRING=$RIGHT_PROMPT_STRING" %{%K{$CURRENT_BG}%F{$1}%}${RIGHT_SIDE_SEGMENT_SEPARATOR}%{$fg$bg%} "
   else
     RIGHT_PROMPT_STRING=$RIGHT_PROMPT_STRING"%{${bg}%}%{${fg}%} "
   fi
@@ -125,6 +133,7 @@ function prompt_zoc_precmd {
   fi
   start_time=$SECONDS
 
+  ruby-info
   build_left_prompt
   build_right_prompt
 }
@@ -150,6 +159,7 @@ function build_right_prompt {
   RIGHT_PROMPT_STRING=''
   right_prompt_start black
   right_prompt_segment black default '[%D{%L:%M:%S %p}]'
+  right_prompt_segment $BRMAGENTA black "${ruby_info[version]} "
   right_prompt_end
 }
 
@@ -188,11 +198,13 @@ function prompt_zoc_setup {
   zstyle ':prezto:module:git:info:unindexed' format '◧'
   zstyle ':prezto:module:git:info:untracked' format '?'
   zstyle ':prezto:module:git:info:dirty' format '☣%D'
+  zstyle ':prezto:module:ruby:info:version' format '%v'
 
-#    'prompt' '$(coalesce "%b" "%p" "%c")%s' \
+#   'prompt' '$(coalesce "%b" "%p" "%c")%s' \
+#   'prompt' '%b %p %c %s' \
   zstyle ':prezto:module:git:info:keys' format \
-    'prompt' '%b %p %c %s' \
-    'status' ' %A%B%S%a%d%m%r%U%I%u%D' \
+    'prompt' '%b %p %s' \
+    'status' '%A%B%S%a%d%m%r%U%I%u%D' \
     'dirty'  '%D'
 
   # Define prompts.
